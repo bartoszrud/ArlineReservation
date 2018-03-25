@@ -23,11 +23,13 @@ public:
 
 class Karta_pokladowa : Rezerwacje
 {
+
   bool priority;
   bool bagaz;
   int nr_miejsca;
   bool status_platnosci;
 public:
+    Karta_pokladowa();
     void dodaj_bagaz();
     void dodaj_priority();
     void wybierz_miejsce();

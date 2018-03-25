@@ -10,8 +10,19 @@ class Samolot
     int ilosc_miejsc;
 public:
     Samolot(int n=100, QString name="Boeing 737-800");
+    QString wysw();
 };
 
+class Lot : public Samolot
+{
+    int wolne_miejsca;
+    QString nr_miejsca;
+
+
+public:
+    Lot(int n=100, QString name="Boeing 737-800",int wolne=100);
+
+};
 
 
 #endif // SAMOLOT_H

@@ -6,3 +6,15 @@ Samolot::Samolot(int n, QString name)
     ilosc_miejsc=n;
 }
 
+
+QString Samolot::wysw()
+{
+    return nazwa;
+
+}
+
+
+Lot::Lot(int n, QString name, int wolne) : Samolot(n, name)
+{
+
+}
