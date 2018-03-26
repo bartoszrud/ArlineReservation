@@ -3,6 +3,8 @@
 #include <QString>
 #include "samolot.h"
 
+
+
 class Dostepne_polaczenia
 {
 
@@ -14,8 +16,10 @@ class Dostepne_polaczenia
     int indeks;
 
 public:
-    Dostepne_polaczenia(Lot lot,QString Klotnisko_wylotu, QString Kgodzina_odlotu, QString Kgodzina_przylotu,int Kindeks);
+    Dostepne_polaczenia(QString Klotnisko_wylotu, QString Kgodzina_odlotu, QString Kgodzina_przylotu,int Kindeks);
     void dodaj_polaczenie();
+    void wczytaj(Lot& lot);
+
 
 };
 

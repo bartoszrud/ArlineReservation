@@ -6,8 +6,10 @@
 #include <QTableWidget>
 #include <QStandardItemModel>
 #include <QDateTime>
+#include "dostepne_polaczenia.h"
 
  Lot *sam1 = new Lot;
+ Dostepne_polaczenia* pol=  new Dostepne_polaczenia("HEH","HEH","HEH", 2);
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -17,10 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     ui->setupUi(this);
-    QPushButton *train_button = new QPushButton(this);
-    train_button->setText(tr("something"));
-    train_button->move(500, 500);
-    train_button->show();
+
 
    // ui->label->setText(sam1->wysw()); //wyświetla nazwę samolotu, ale będzie trzeba zaprzyjaźnić żeby nie robić osobnych funkcji dla kazdej zmiennej
     ui->statusBar->addPermanentWidget(ui->pushButton); //Przycisk w StatusBar
@@ -55,6 +54,7 @@ void MainWindow::on_label_linkHovered(const QString &link)
 
 void MainWindow::on_pushButton_clicked()
 {
+    pol->wczytaj(*sam1);
 
 
 }

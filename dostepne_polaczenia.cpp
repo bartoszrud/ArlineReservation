@@ -1,13 +1,20 @@
 #include "dostepne_polaczenia.h"
 
-Dostepne_polaczenia::Dostepne_polaczenia(Lot lot,QString Klotnisko_wylotu, QString Kgodzina_odlotu, QString Kgodzina_przylotu,int Kindeks)
+
+void Dostepne_polaczenia::wczytaj(Lot& lot)
 {
     data_lotu=lot.data_odlotu;
-    lotnisko_docelowe=lot.lotnisko_docelowe;
+   lotnisko_docelowe=lot.lotnisko_docelowe;
+}
+Dostepne_polaczenia::Dostepne_polaczenia(QString Klotnisko_wylotu, QString Kgodzina_odlotu, QString Kgodzina_przylotu,int Kindeks)
+{
+    //data_lotu=lot.data_odlotu;
+    //lotnisko_docelowe=lot.lotnisko_docelowe;
     lotnisko_wylotu=Klotnisko_wylotu;
     godzina_odlotu=Kgodzina_odlotu;
     godzina_przylotu=Kgodzina_przylotu;
     indeks=Kindeks;
 
 }
+
 

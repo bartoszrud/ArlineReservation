@@ -30,7 +30,8 @@ SOURCES += \
     rezerwacje.cpp \
     admin.cpp \
     dostepne_polaczenia.cpp \
-    platnosc.cpp
+    platnosc.cpp \
+    baza_danych.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,7 +39,8 @@ HEADERS += \
     rezerwacje.h \
     admin.h \
     dostepne_polaczenia.h \
-    platnosc.h
+    platnosc.h \
+    baza_danych.h
 
 FORMS += \
         mainwindow.ui
