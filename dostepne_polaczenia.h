@@ -1,4 +1,4 @@
-#ifndef DOSTEPNE_POLACZENIA_H
+ #ifndef DOSTEPNE_POLACZENIA_H
 #define DOSTEPNE_POLACZENIA_H
 #include <QString>
 

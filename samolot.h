@@ -17,6 +17,9 @@ class Lot : public Samolot
 {
     int wolne_miejsca;
     QString nr_miejsca;
+    QString lotnisko_docelowe;
+    double cena_pdst;
+    QString data_odlotu;
 
 
 public:
