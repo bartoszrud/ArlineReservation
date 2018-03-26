@@ -5,6 +5,7 @@
 #include "admin.h"
 #include <QTableWidget>
 #include <QStandardItemModel>
+#include <QDateTime>
 
  Lot *sam1 = new Lot;
 
@@ -16,13 +17,25 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     ui->setupUi(this);
-    ui->label->setText(sam1->wysw()); //wyświetla nazwę samolotu, ale będzie trzeba zaprzyjaźnić żeby nie robić osobnych funkcji dla kazdej zmiennej
+    QPushButton *train_button = new QPushButton(this);
+    train_button->setText(tr("something"));
+    train_button->move(500, 500);
+    train_button->show();
 
-    QStandardItemModel *model = new QStandardItemModel(1,2,this);
-    model->setData(model->index(0,0), sam1->wysw(), Qt::DisplayRole);
-    model->setData(model->index(0,1), "locik", Qt::DisplayRole);
-    ui->tableView->setModel(model);
+   // ui->label->setText(sam1->wysw()); //wyświetla nazwę samolotu, ale będzie trzeba zaprzyjaźnić żeby nie robić osobnych funkcji dla kazdej zmiennej
+    ui->statusBar->addPermanentWidget(ui->pushButton); //Przycisk w StatusBar
+    QStandardItemModel *model = new QStandardItemModel(1,4,this);
+         model->setData(model->index(0,0), "samolocik", Qt::DisplayRole);
+         model->setData(model->index(0,1), "leic sobie ", Qt::DisplayRole);
+         ui->tableView->setModel(model);
 
+         QDateTime date2 = QDateTime::currentDateTime();
+         date2 = date2.addDays(1);
+         QString date = date2.toString();
+         date = date.chopped(13);
+
+         model->insertColumn(2, QModelIndex());
+         model->setData(model->index(0,2), date, Qt::DisplayRole);
 
 
 }
@@ -45,3 +58,5 @@ void MainWindow::on_pushButton_clicked()
 
 
 }
+
+

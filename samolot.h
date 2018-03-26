@@ -2,6 +2,7 @@
 #define SAMOLOT_H
 #include <cstdlib>
 #include <QString>
+#include <dostepne_polaczenia.h>
 
 
 class Samolot
@@ -15,15 +16,18 @@ public:
 
 class Lot : public Samolot
 {
+    friend class Dostepne_polaczenia;
+
     int wolne_miejsca;
-    QString nr_miejsca;
+    QString nr_lotu;
     QString lotnisko_docelowe;
     double cena_pdst;
     QString data_odlotu;
 
 
 public:
-    Lot(int n=100, QString name="Boeing 737-800",int wolne=100);
+    Lot(int n=100, QString name="Boeing 737-800",int wolne=100, QString docelowe="WRO", QString data="01.01.2019" , QString nr="NO2137" );
+    void zajmij_miejsce();
 
 };
 
