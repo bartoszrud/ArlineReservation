@@ -3,6 +3,7 @@
 #include <QString>
 #include "samolot.h"
 
+class Lot;
 
 
 class Dostepne_polaczenia

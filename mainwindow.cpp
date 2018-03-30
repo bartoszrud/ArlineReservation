@@ -8,6 +8,7 @@
 #include <QDateTime>
 #include "dostepne_polaczenia.h"
 
+
  Lot *sam1 = new Lot;
  Dostepne_polaczenia* pol=  new Dostepne_polaczenia("HEH","HEH","HEH", 2);
 
@@ -54,8 +55,11 @@ void MainWindow::on_label_linkHovered(const QString &link)
 
 void MainWindow::on_pushButton_clicked()
 {
-    pol->wczytaj(*sam1);
+    hide();
+    adminwin = new AdminWindow(this);
+    adminwin->show();
 
+   // pol->wczytaj(*sam1);
 
 }
 
