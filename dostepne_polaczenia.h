@@ -18,7 +18,7 @@ class Dostepne_polaczenia
 
 public:
     Dostepne_polaczenia(QString Klotnisko_wylotu, QString Kgodzina_odlotu, QString Kgodzina_przylotu,int Kindeks);
-    void dodaj_polaczenie();
+    Dostepne_polaczenia* dodaj_polaczenie();
     void wczytaj(Lot& lot);
 
 

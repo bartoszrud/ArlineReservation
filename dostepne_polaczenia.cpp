@@ -17,4 +17,12 @@ Dostepne_polaczenia::Dostepne_polaczenia(QString Klotnisko_wylotu, QString Kgodz
 
 }
 
+Dostepne_polaczenia* Dostepne_polaczenia::dodaj_polaczenie( )
+{
+    Dostepne_polaczenia *p=new Dostepne_polaczenia("l","DF","FD",1); // to nam nic nie da
+
+    return p;
+
+}
+
 

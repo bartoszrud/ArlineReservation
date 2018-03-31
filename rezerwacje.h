@@ -1,7 +1,7 @@
 #ifndef REZERWACJE_H
 #define REZERWACJE_H
 #include <QString>
-
+#include <platnosc.h>
 
 class Rezerwacje
 {
@@ -23,6 +23,7 @@ public:
 
 class Karta_pokladowa : Rezerwacje
 {
+    friend class Platnosc;
 
   bool priority;
   bool bagaz;

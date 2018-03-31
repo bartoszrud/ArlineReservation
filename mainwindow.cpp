@@ -58,6 +58,8 @@ void MainWindow::on_pushButton_clicked()
     hide();
     adminwin = new AdminWindow(this);
     adminwin->show();
+    Dostepne_polaczenia p("X","D","12",1);
+    p.dodaj_polaczenie(); // trzeba zmienic sposób dodawania połączen do dostępnych
 
    // pol->wczytaj(*sam1);
 
