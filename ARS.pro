@@ -29,17 +29,24 @@ SOURCES += \
     samolot.cpp \
     rezerwacje.cpp \
     admin.cpp \
-    dostepne_polaczenia.cpp
+    dostepne_polaczenia.cpp \
+    baza_danych.cpp \
+    platnosc.cpp \
+    adminwindow.cpp
 
 HEADERS += \
         mainwindow.h \
     samolot.h \
     rezerwacje.h \
     admin.h \
-    dostepne_polaczenia.h
+    dostepne_polaczenia.h \
+    baza_danych.h \
+    platnosc.h \
+    adminwindow.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    adminwindow.ui
 
 RESOURCES += \
     zrodla.qrc

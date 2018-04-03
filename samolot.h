@@ -2,7 +2,7 @@
 #define SAMOLOT_H
 #include <cstdlib>
 #include <QString>
-#include <QStringList>
+#include <dostepne_polaczenia.h> // nie wiem czy potrzebne do przyjaźni, jeszcze sprawdze
 
 
 class Samolot
@@ -16,14 +16,13 @@ public:
 
 class Lot : public Samolot
 {
+    friend class Dostepne_polaczenia;
+    friend class Admin;
+
     int wolne_miejsca;
     QString nr_lotu;
-    //QString lotnisko_docelowe;
-    double cena_pdst;
-    //QString data_odlotu;
-
-public:
     QString lotnisko_docelowe;
+    double cena_pdst;
     QString data_odlotu;
 
 

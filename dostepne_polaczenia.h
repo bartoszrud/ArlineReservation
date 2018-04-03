@@ -2,9 +2,9 @@
 #define DOSTEPNE_POLACZENIA_H
 #include <QString>
 #include "samolot.h"
-#include <QStringList>
 
 class Lot;
+
 
 class Dostepne_polaczenia
 {
@@ -17,10 +17,10 @@ class Dostepne_polaczenia
    int indeks;
 
 public:
-   Dostepne_polaczenia(Lot lot,QString Klotnisko_wylotu, QString Kgodzina_odlotu, QString Kgodzina_przylotu,int Kindeks);
-   void dodaj_polaczenie();
+   Dostepne_polaczenia(QString Klotnisko_wylotu="WRO", QString Kgodzina_odlotu="12:30", QString Kgodzina_przylotu="14:40",int Kindeks=1);
+   Dostepne_polaczenia* dodaj_polaczenie();
+   void wczytaj(Lot& lot);
 
-   QStringList dane_lotu;
 
 };
 
