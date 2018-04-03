@@ -14,7 +14,11 @@ Lot *sam2 = new Lot;
 Lot *sam3 = new Lot;
 Lot *sam4 = new Lot;
 
-Dostepne_polaczenia *pol1 = new Dostepne_polaczenia(*sam2, "WRO", "14:20", "17:30", 120);
+Dostepne_polaczenia *pol1 = new Dostepne_polaczenia(*sam1,"WRO", "14:20", "17:30", 120);
+
+
+
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

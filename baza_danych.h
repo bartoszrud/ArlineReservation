@@ -2,10 +2,14 @@
 #define BAZA_DANYCH_H
 
 
-class baza_danych
+class Baza_danych
 {
+    int indeks;
 public:
-    baza_danych();
+    Baza_danych();
+    void dodaj_do_bazy();
+    void usun_z_bazy();
+
 };
 
 #endif // BAZA_DANYCH_H

@@ -17,7 +17,7 @@ class Dostepne_polaczenia
    int indeks;
 
 public:
-   Dostepne_polaczenia(QString Klotnisko_wylotu="WRO", QString Kgodzina_odlotu="12:30", QString Kgodzina_przylotu="14:40",int Kindeks=1);
+   Dostepne_polaczenia(const Lot & lot, QString Klotnisko_wylotu="WRO", QString Kgodzina_odlotu="12:30", QString Kgodzina_przylotu="14:40",int Kindeks=1);
    Dostepne_polaczenia* dodaj_polaczenie();
    void wczytaj(Lot& lot);
 

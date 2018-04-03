@@ -1,36 +1,24 @@
-#ifndef SAMOLOT_H
-#define SAMOLOT_H
-#include <cstdlib>
-#include <QString>
-#include <dostepne_polaczenia.h> // nie wiem czy potrzebne do przyjaźni, jeszcze sprawdze
+#include "samolot.h"
 
-
-class Samolot
+Samolot::Samolot(int n, QString name)
 {
-    QString nazwa;
-    int ilosc_miejsc;
-public:
-    Samolot(int n=100, QString name="Boeing 737-800");
-    QString wysw();
-};
+    nazwa=name;
+    ilosc_miejsc=n;
+}
 
-class Lot : public Samolot
+
+QString Samolot::wysw()
 {
-    friend class Dostepne_polaczenia;
-    friend class Admin;
+    return nazwa;
 
-    int wolne_miejsca;
-    QString nr_lotu;
-    QString lotnisko_docelowe;
-    double cena_pdst;
-    QString data_odlotu;
+}
 
 
-public:
-    Lot(int n=100, QString name="Boeing 737-800",int wolne=100, QString docelowe="WRO", QString data="01.01.2019" , QString nr="NO2137" );
-    void zajmij_miejsce();
+Lot::Lot(int n, QString name, int wolne, QString docelowe, QString data , QString nr) : Samolot(n, name)
+{
+    wolne_miejsca=wolne;
+    lotnisko_docelowe=docelowe;
+    data_odlotu=data;
+    nr_lotu=nr;
 
-};
-
-
-#endif // SAMOLOT_H
+}

@@ -1,6 +1,6 @@
 #include "platnosc.h"
 
-platnosc::platnosc()
+Platnosc::Platnosc()
 {
 
 }
