@@ -10,7 +10,7 @@
 #include <dostepne_polaczenia.h>
 
 Lot *sam1 = new Lot;
-Lot *sam2 = new Lot;
+Lot *sam2 = new Lot(140,"Airbus A319",140,"KEF");
 Lot *sam3 = new Lot;
 Lot *sam4 = new Lot;
 
@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setupConnections();
      //ui->label->setText(sam1->wysw()); //wyświetla nazwę samolotu, ale będzie trzeba zaprzyjaźnić żeby nie robić osobnych funkcji dla kazdej zmiennej
 
-    /*
+/*
     QStandardItemModel *model = new QStandardItemModel(1,2,this);
      model->setData(model->index(0,0), sam1->dane_lotu[0], Qt::DisplayRole);
      model->setData(model->index(0,1), sam1->dane_lotu[1], Qt::DisplayRole);
@@ -48,8 +48,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QStringListModel *model = new QStringListModel();
     model->setData(pol1->dane_lotu);
     ui->tabelaLotow->setModel(model);
+*/
 
-    */
 
 }
 
@@ -59,10 +59,6 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_label_linkHovered(const QString &link)
-{
-
-}
 
 void MainWindow::on_pushButton_clicked()
 {
