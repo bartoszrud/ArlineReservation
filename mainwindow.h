@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <dostepne_polaczenia.h>
+
+class Dostepne_polaczenia;
 
 namespace Ui {
 class MainWindow;
@@ -24,8 +27,10 @@ private slots:
 
     void on_przyciskRezerwuj_clicked();
 
+
 public slots:
     void rezerwujLot();
+     void wyswietlanie(Dostepne_polaczenia & pol);
 
 private:
     Ui::MainWindow *ui;

@@ -22,3 +22,11 @@ Lot::Lot(int n, QString name, int wolne, QString docelowe, QString data , QStrin
     nr_lotu=nr;
 
 }
+Lot::Lot(Samolot & sam, int wolne, QString docelowe, QString data , QString nr) : Samolot(sam)
+{
+
+    wolne_miejsca=wolne;
+    lotnisko_docelowe=docelowe;
+    data_odlotu=data;
+    nr_lotu=nr;
+}

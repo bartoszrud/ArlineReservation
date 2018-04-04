@@ -27,8 +27,10 @@ class Lot : public Samolot
 
 
 public:
-    Lot(int n=100, QString name="Boeing 737-800",int wolne=100, QString docelowe="WRO", QString data="01.01.2019" , QString nr="NO2137" );
+    Lot(int n=100, QString name="Boeing 737-800",int wolne=100, QString docelowe="KEF", QString data="01.01.2019" , QString nr="NO2137" );
+    Lot(Samolot & sam, int wolne=100, QString docelowe="WRO", QString data="01.01.2019" , QString nr="NO2137");
     void zajmij_miejsce();
+
 
 };
 

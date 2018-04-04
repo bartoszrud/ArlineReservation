@@ -9,6 +9,8 @@
 #include <QString>
 #include <dostepne_polaczenia.h>
 
+
+
 Lot *sam1 = new Lot;
 Lot *sam2 = new Lot(140,"Airbus A319",140,"KEF");
 Lot *sam3 = new Lot;
@@ -16,6 +18,7 @@ Lot *sam4 = new Lot;
 
 Dostepne_polaczenia *pol1 = new Dostepne_polaczenia(*sam1,"WRO", "14:20", "17:30", 120);
 
+void wyswietlanie(Dostepne_polaczenia & pol);
 
 
 
@@ -27,30 +30,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setupConnections();
      //ui->label->setText(sam1->wysw()); //wyświetla nazwę samolotu, ale będzie trzeba zaprzyjaźnić żeby nie robić osobnych funkcji dla kazdej zmiennej
-
-/*
-    QStandardItemModel *model = new QStandardItemModel(1,2,this);
-     model->setData(model->index(0,0), sam1->dane_lotu[0], Qt::DisplayRole);
-     model->setData(model->index(0,1), sam1->dane_lotu[1], Qt::DisplayRole);
-     ui->tabelaLotow->setModel(model);
-
-     QDateTime date2 = QDateTime::currentDateTime();
-     date2 = date2.addDays(1);
-     QString date = date2.toString();
-     date = date.chopped(13);
-
-     model->insertColumn(2, QModelIndex());
-     model->setData(model->index(0,2), date, Qt::DisplayRole);
-
-     //date = QDateTime::currentDateTime()::toString()
+    wyswietlanie(*pol1);
 
 
-    QStringListModel *model = new QStringListModel();
-    model->setData(pol1->dane_lotu);
-    ui->tabelaLotow->setModel(model);
-*/
 
+}
 
+void MainWindow::wyswietlanie(Dostepne_polaczenia & pol)
+{
+MainWindow::ui->tabelaLotow->setItem(0,0,new QTableWidgetItem(pol.lotnisko_docelowe));
 }
 
 MainWindow::~MainWindow()
