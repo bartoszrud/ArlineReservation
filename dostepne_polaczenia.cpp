@@ -17,12 +17,22 @@ Dostepne_polaczenia::Dostepne_polaczenia(const Lot & lot, QString Klotnisko_wylo
 
 }
 
+Dostepne_polaczenia::Dostepne_polaczenia(QString Kdata_lotu,QString Klotnisko_docelowe, QString Klotnisko_wylotu, QString Kgodzina_odlotu, QString Kgodzina_przylotu,int Kindeks)
+{
+    data_lotu=Kdata_lotu;
+    lotnisko_docelowe=Klotnisko_docelowe;
+    lotnisko_wylotu=Klotnisko_wylotu;
+    godzina_odlotu=Kgodzina_odlotu;
+    godzina_przylotu=Kgodzina_przylotu;
+    indeks=Kindeks;
+
+}
+
 Dostepne_polaczenia* Dostepne_polaczenia::dodaj_polaczenie( )
 {
     //Dostepne_polaczenia *p=new Dostepne_polaczenia("l","DF","FD",1); // to nam nic nie da
 
-    //return p;
-
+    return 0;
 }
 
 

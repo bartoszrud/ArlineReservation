@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <dostepne_polaczenia.h>
 
+
 class Dostepne_polaczenia;
 
 namespace Ui {
@@ -28,9 +29,21 @@ private slots:
     void on_przyciskRezerwuj_clicked();
 
 
+    void on_PrzyciskAdmin_clicked();
+
+    void on_PrzyciskZaloguj_clicked();
+
+    void on_przyciskDalej_clicked();
+
+    void on_przyciskZaezadzaj_clicked();
+
+    void on_przyciskPowrot_clicked();
+
+    void on_przyciskSpr_clicked();
+
 public slots:
     void rezerwujLot();
-     void wyswietlanie(Dostepne_polaczenia & pol);
+     void wyswietlanie(Dostepne_polaczenia  pol[]);
 
 private:
     Ui::MainWindow *ui;
