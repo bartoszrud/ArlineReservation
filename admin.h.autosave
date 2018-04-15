@@ -11,11 +11,10 @@ const QString haslo="admin123";
 public:
 
     Admin();
-    void zaloguj();
     void dodaj_lot();
     void usun_lot();
     void anuluj_rezerwacje();
-    bool sprHaslo(QString h);
+    bool zaloguj(QString h);
 };
 
 #endif // ADMIN_H

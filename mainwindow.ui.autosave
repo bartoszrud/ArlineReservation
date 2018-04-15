@@ -52,7 +52,7 @@
        <set>Qt::ImhDigitsOnly</set>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="stronaLoty">
        <property name="styleSheet">
@@ -106,7 +106,7 @@
          <rect>
           <x>9</x>
           <y>9</y>
-          <width>531</width>
+          <width>521</width>
           <height>151</height>
          </rect>
         </property>

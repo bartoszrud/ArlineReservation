@@ -49,6 +49,8 @@ private slots:
     void on_przyciskStrglZarezerw_clicked();
 
 
+    void on_tabelaLotow_cellActivated(int row, int column);
+    
 public slots:
     void on_PrzyciskZaloguj_clicked();
     void rezerwujLot();

@@ -30,3 +30,8 @@ Lot::Lot(Samolot & sam, int wolne, QString docelowe, QString data , QString nr) 
     data_odlotu=data;
     nr_lotu=nr;
 }
+
+QString Lot::podaj_nr_lotu()
+{
+    return nr_lotu;
+}

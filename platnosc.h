@@ -7,7 +7,7 @@ class Platnosc
    int nr_platnosci;
    double cena_koncowa;
 public:
-    Platnosc();
+    Platnosc(int nr=0,int cena=0);
     bool zaplac();
     double oblicz_cene();
 };

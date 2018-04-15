@@ -10,16 +10,21 @@
 #include <dostepne_polaczenia.h>
 #include <adminwindow.h>
 #include <QList>
+#include <fstream>
 
 
  int n = 4;
  int licznik_rezerwacji=0;
-class list;
+ int licznik_kart=0;
+ int ktora_rezerwacja=0;
+
+ Admin *admin1=new Admin;
 
 Lot *sam1 = new Lot[n]
 {
     Lot(180,"Airbus A319",180,"WAW"),
     Lot(180,"Airbus A319",180,"POZ"),
+    Lot(180,"Airbus A319",180,"OSL"),
 };
 
 Dostepne_polaczenia *pol1 = new Dostepne_polaczenia[n];
@@ -101,7 +106,7 @@ void MainWindow::on_PrzyciskZaloguj_clicked()
 {
     QString haslo = ui->wprowadzoneHaslo->text();
 
-    if(haslo == "admin123")
+    if(admin1->sprHaslo(haslo))
     {
     hide();
     adminwindow *admwin =new adminwindow(this);
@@ -121,10 +126,14 @@ void MainWindow::on_przyciskDalej_clicked()
     QString nrtel = ui->lineNrTelefonu->text();
     QString kraj = ui->lineKraj->text();
 
-    Rezerwacje *p1=new Rezerwacje(imie,nazwisko,nrtel,kraj);
+    Rezerwacje *p1=new Rezerwacje(sam1[1],imie,nazwisko,nrtel,kraj);
     rezerwacje.push_back(*p1);
-   licznik_rezerwacji++;
+    licznik_rezerwacji+=1;
     ui->stackedWidget->setCurrentWidget(ui->stronaKartapok);
+    ui->lineImie->clear();
+    ui->lineNazwisko->clear();
+    ui->lineNrTelefonu->clear();
+    ui->lineKraj->clear();
 }
 
 
@@ -132,7 +141,10 @@ void MainWindow::on_przyciskDalej_clicked()
 
 void MainWindow::on_przyciskZaezadzaj_clicked()
 {
+    ui->lineNazwiskoZarz->clear();
+    ui->lineNrtelZarz->clear();
     ui->stackedWidget->setCurrentWidget(ui->stronaZarzadzaj);
+
 }
 
 void MainWindow::on_przyciskPowrot_clicked()
@@ -143,6 +155,105 @@ void MainWindow::on_przyciskPowrot_clicked()
 
 void MainWindow::on_przyciskSpr_clicked()
 {
-    //tu wstawic wyszukiwanie rezerwacji
-    ui->stackedWidget->setCurrentWidget(ui->stronaKartapok);
+
+    QString Snazw = ui->lineNazwiskoZarz->text();
+    QString Snr=ui->lineNrtelZarz->text();
+
+for(int x=0;x<licznik_rezerwacji;x++)
+{
+        if(karty[x].match(Snazw,Snr)==true)
+        {
+            ui->stackedWidget->setCurrentWidget(ui->stronaKartaZarz);
+            ktora_rezerwacja=x;   //wskazuje numer znalezionej rezerwacji.
+            if(karty[x].czyBagaz()== true)
+            {
+                ui->checkBagazZarezerw->setChecked(true);
+
+            } else ui->checkBagazZarezerw->setChecked(false);
+            if (karty[x].czyPriority()==true)
+            {
+                ui->checkPriorityZarezerw->setChecked(true);
+            } else ui->checkPriorityZarezerw->setChecked(false);
+           break;
+        }
+
+}
+
+ //wstawic sprawdzanie czy pasazer ma juz wykupiony bagaz lub priority
+
+}
+
+void MainWindow::on_przyciskAkceptuj_clicked()
+{
+
+
+    Karta_pokladowa *k1=new Karta_pokladowa(rezerwacje[licznik_kart]);
+    karty.push_back(*k1);
+
+
+    if(ui->checkBagaz->isChecked())
+    {
+        karty[licznik_kart].dodaj_bagaz();
+    }
+
+    if(ui->checkPriority->isChecked())
+    {
+        karty[licznik_kart].dodaj_priority();
+    }
+
+    karty[licznik_kart].wybierz_miejsce(ui->spinBox->value());
+   //std:: ofstream plik("karty.dat" , std::ios_base::out | std::ios_base::app | std::ios_base::binary);
+   //plik.write( karty[licznik_kart], sizeof karty[licznik_kart]);
+licznik_kart++;
+   // QString s = QString::number(licznik_rezerwacji);
+    //ui->statusBar->showMessage(s,2000);
+    ui->stackedWidget->setCurrentWidget(ui->stronaLoty);
+    ui->checkBagaz->setChecked(false);
+    ui->checkPriority->setChecked(false);
+}
+
+
+void MainWindow::on_przyciskStrgl_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->stronaLoty);
+}
+
+
+
+//const char FileName[] = "plik.bin";
+
+/*
+void MainWindow::closeEvent(QCloseEvent *event){
+
+    std::ofstream file;
+       file.write( FileName, std::ios::binary | std::ios::app );
+       if( file.good() )
+       {
+           for (int i=0;i<licznik_kart;i++){
+           file.write( reinterpret_cast < char *>(karty[i] ), sizeof( karty[i] ) );
+           file.close();
+           }
+       }
+}
+*/
+
+
+void MainWindow::on_przyciskAkceptujZarezerw_clicked()
+{
+    if(ui->checkBagazZarezerw->isChecked())
+    {
+        karty[ktora_rezerwacja].dodaj_bagaz();
+    }
+
+    if(ui->checkPriorityZarezerw->isChecked())
+    {
+        karty[ktora_rezerwacja].dodaj_priority();
+    }
+
+    ui->stackedWidget->setCurrentWidget(ui->stronaLoty);
+}
+
+void MainWindow::on_przyciskStrglZarezerw_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->stronaLoty);
 }
