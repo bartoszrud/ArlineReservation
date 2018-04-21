@@ -32,8 +32,7 @@ SOURCES += \
     admin.cpp \
     dostepne_polaczenia.cpp \
     baza_danych.cpp \
-    platnosc.cpp \
-    adminwindow.cpp
+    platnosc.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -43,11 +42,10 @@ HEADERS += \
     dostepne_polaczenia.h \
     baza_danych.h \
     platnosc.h \
-    adminwindow.h
+    przeciazenia.h
 
 FORMS += \
-        mainwindow.ui \
-    adminwindow.ui
+        mainwindow.ui
 
 RESOURCES += \
     zrodla.qrc

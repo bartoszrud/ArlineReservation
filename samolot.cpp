@@ -16,22 +16,65 @@ QString Samolot::wysw()
 
 Lot::Lot(int n, QString name, int wolne, QString docelowe, QString data , QString nr) : Samolot(n, name)
 {
+    for (int i=0;i<=wolne;i++)
+    {
+        miejsca[i]=true;
+    }
     wolne_miejsca=wolne;
     lotnisko_docelowe=docelowe;
     data_odlotu=data;
     nr_lotu=nr;
+    cena_pdst= ustaw_cene();
 
 }
 Lot::Lot(Samolot & sam, int wolne, QString docelowe, QString data , QString nr) : Samolot(sam)
 {
+    for (int i=0;i<=wolne;i++)
+    {
+        miejsca[i]=true;
+    }
 
     wolne_miejsca=wolne;
     lotnisko_docelowe=docelowe;
     data_odlotu=data;
     nr_lotu=nr;
+    cena_pdst= ustaw_cene();
 }
 
 QString Lot::podaj_nr_lotu()
 {
     return nr_lotu;
+}
+
+double Lot::ustaw_cene()
+{
+    double losowanie = double(((std::rand() % 50) +220));
+
+    return losowanie;
+}
+
+bool Lot::zajmij_miejsce(int miejsce)
+{
+
+    if (miejsca[miejsce] == true && miejsce!=0)
+    {
+        miejsca[miejsce] = false;
+        wolne_miejsca--;
+        return true;
+    } else return false;
+}
+
+double Lot::podaj_cene(bool bagaz, bool priority)
+{
+    double cena_aktualna=cena_pdst;
+    if(bagaz==true)
+    {
+        cena_aktualna+=110;
+    }
+    if(priority==true)
+    {
+        cena_aktualna+=50;
+    }
+
+    return cena_aktualna ;
 }

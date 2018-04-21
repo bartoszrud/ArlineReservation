@@ -12,3 +12,8 @@ bool Admin::zaloguj(QString h)
         return true;
     else return false;
 }
+
+Karta_pokladowa* Admin::dodaj_lot()
+{
+
+}

@@ -46,13 +46,16 @@
     <string notr="true"/>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
+    <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="inputMethodHints">
        <set>Qt::ImhDigitsOnly</set>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="stronaLoty">
        <property name="styleSheet">
@@ -187,98 +190,163 @@
        </widget>
       </widget>
       <widget class="QWidget" name="stronaRezerwacje">
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <widget class="QLabel" name="labelImie">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Ignored" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Imie</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="lineImie">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="labelNazwisko">
-          <property name="text">
-           <string>Nazwisko</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="lineNazwisko">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="labelNrTelefonu">
-          <property name="text">
-           <string>Nr Telefonu</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="lineNrTelefonu">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="inputMethodHints">
-           <set>Qt::ImhDigitsOnly</set>
-          </property>
-          <property name="maxLength">
-           <number>13</number>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="labelKraj">
-          <property name="text">
-           <string>Kraj</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QLineEdit" name="lineKraj">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="inputMethodHints">
-           <set>Qt::ImhUppercaseOnly</set>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QPushButton" name="przyciskDalej">
-          <property name="text">
-           <string>Dalej</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <widget class="QLabel" name="labelImie">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>73</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Imie</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineImie">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>70</y>
+          <width>211</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelNazwisko">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>163</y>
+          <width>61</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Nazwisko</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineNazwisko">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>160</y>
+          <width>211</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelNrTelefonu">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>253</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Nr Telefonu</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineNrTelefonu">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>250</y>
+          <width>211</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
+        </property>
+        <property name="maxLength">
+         <number>13</number>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelKraj">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>343</y>
+          <width>19</width>
+          <height>13</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Kraj</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineKraj">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>340</y>
+          <width>211</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhUppercaseOnly</set>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="przyciskDalej">
+        <property name="geometry">
+         <rect>
+          <x>700</x>
+          <y>500</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Dalej</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="przyciskStrglRezerwacje">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>500</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Strona główna</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="stronaZarzadzaj">
        <widget class="QLabel" name="label_5">
@@ -421,8 +489,11 @@
           <kerning>false</kerning>
          </font>
         </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
         <property name="maximum">
-         <number>189</number>
+         <number>156</number>
         </property>
        </widget>
        <widget class="QLabel" name="label_4">
@@ -501,6 +572,12 @@
           <height>20</height>
          </rect>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
+        </property>
+        <property name="maxLength">
+         <number>16</number>
+        </property>
        </widget>
        <widget class="QLineEdit" name="lineCVC">
         <property name="geometry">
@@ -510,6 +587,51 @@
           <width>141</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
+        </property>
+        <property name="maxLength">
+         <number>3</number>
+        </property>
+       </widget>
+       <widget class="QLabel" name="kwotaPlatnosci">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>240</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Kwota</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="przyciskZaplac">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>500</y>
+          <width>75</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Zapłać</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>190</y>
+          <width>220</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Do zapłaty (kwota podana w PLN) :</string>
         </property>
        </widget>
       </widget>
@@ -588,8 +710,11 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
         <property name="maximum">
-         <number>189</number>
+         <number>156</number>
         </property>
        </widget>
        <widget class="QPushButton" name="przyciskAkceptujZarezerw">
@@ -663,6 +788,123 @@
         </property>
        </widget>
       </widget>
+      <widget class="QWidget" name="AdminPanel">
+       <widget class="QTableWidget" name="tabelaLotowAdmin">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>531</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <row>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Lotnisko wylotu</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Lotnisko docelowe</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Godzina odlotu</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Godzina przylotu</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Data</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QComboBox" name="comboBoxAdmin">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>500</y>
+          <width>69</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QPushButton" name="przyciskUsunLot">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>500</y>
+          <width>75</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Usuń lot</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="przyciskDodajLot">
+        <property name="geometry">
+         <rect>
+          <x>700</x>
+          <y>500</y>
+          <width>75</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Dodaj lot</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="stronaDodajLot"/>
      </widget>
     </item>
    </layout>

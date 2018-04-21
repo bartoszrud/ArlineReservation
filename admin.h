@@ -3,6 +3,7 @@
 #include <QString>
 #include "mainwindow.h"
 
+class Karta_pokladowa;
 
 class Admin
 {
@@ -11,11 +12,10 @@ const QString haslo="admin123";
 public:
 
     Admin();
-    void zaloguj();
-    void dodaj_lot();
+    Karta_pokladowa* dodaj_lot();
     void usun_lot();
     void anuluj_rezerwacje();
-    bool sprHaslo(QString h);
+    bool zaloguj(QString h);
 };
 
 #endif // ADMIN_H

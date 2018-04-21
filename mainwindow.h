@@ -48,17 +48,31 @@ private slots:
 
     void on_przyciskStrglZarezerw_clicked();
 
+    void on_przyciskRezerwuj_clicked();
+
+    void on_przyciskZaplac_clicked();
+
+    void on_przyciskStrglRezerwacje_clicked();
+
+    void on_przyciskDodajLot_clicked();
 
 public slots:
     void on_PrzyciskZaloguj_clicked();
     void rezerwujLot();
      void wyswietlanie(Dostepne_polaczenia  pol[]);
-    // void closeEvent(QCloseEvent *event);
+
+    void closeEvent(QCloseEvent *event);
 
 private:
     Ui::MainWindow *ui;
 
     void setupConnections();
+public:
+    void zapisywanieKart();
+    void zapisywanieRezerw();
+    void wczytywanieRezerw();
+    void wczytywanieKart();
+
 };
 
 #endif // MAINWINDOW_H
