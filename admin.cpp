@@ -13,7 +13,8 @@ bool Admin::zaloguj(QString h)
     else return false;
 }
 
-Karta_pokladowa* Admin::dodaj_lot()
+Lot* Admin::dodaj_lot(QString docelowe, QString nr_lotu, QString data)
 {
-
+    Lot *lot=new Lot(156,"Airbus A319", 156,docelowe,nr_lotu,data);
+            return lot;
 }

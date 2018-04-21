@@ -12,7 +12,7 @@ const QString haslo="admin123";
 public:
 
     Admin();
-    Karta_pokladowa* dodaj_lot();
+    Lot* dodaj_lot(QString docelowe,  QString nr_lotu, QString data);
     void usun_lot();
     void anuluj_rezerwacje();
     bool zaloguj(QString h);

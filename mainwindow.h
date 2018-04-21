@@ -52,14 +52,14 @@ private slots:
 
     void on_przyciskZaplac_clicked();
 
-    void on_przyciskStrglRezerwacje_clicked();
-
     void on_przyciskDodajLot_clicked();
+
+    void on_przyciskDodaj2_clicked();
 
 public slots:
     void on_PrzyciskZaloguj_clicked();
     void rezerwujLot();
-     void wyswietlanie(Dostepne_polaczenia  pol[]);
+     void wyswietlanie();
 
     void closeEvent(QCloseEvent *event);
 
@@ -72,6 +72,8 @@ public:
     void zapisywanieRezerw();
     void wczytywanieRezerw();
     void wczytywanieKart();
+    void zapisywanieLotow();
+    void wczytywanieLotow();
 
 };
 

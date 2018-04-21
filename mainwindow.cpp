@@ -11,8 +11,8 @@
 #include <QList>
 #include <fstream>
 #include <ctime>
+
 #include <QFile>
-#include <QMap>
 #include <QCloseEvent>
 
 
@@ -24,17 +24,19 @@
 
  Admin *admin1=new Admin;
 
- Dostepne_polaczenia *pol1 = new Dostepne_polaczenia[n];
+ //Dostepne_polaczenia *pol1 = new Dostepne_polaczenia[n];
  QList<Rezerwacje> rezerwacje;
  QList<Karta_pokladowa> karty;
  QList<Lot> loty;
+ QList<Dostepne_polaczenia> pol;
 
 
 
-
-void wyswietlanie(Dostepne_polaczenia  pol[]);
+void wyswietlanie();
 void wczytywanieRezerw();
 void wczytywanieKart();
+void wczytywanieLotow();
+
 
 
 
@@ -47,27 +49,34 @@ MainWindow::MainWindow(QWidget *parent) :
    setupConnections();
      //ui->label->setText(sam1->wysw()); //wyświetla nazwę samolotu, ale będzie trzeba zaprzyjaźnić żeby nie robić osobnych funkcji dla kazdej zmiennej
     ui->statusBar->addPermanentWidget(ui->PrzyciskAdmin); //Przycisk w StatusBar
-
+   wczytywanieLotow();
     wczytywanieRezerw();
     wczytywanieKart();
-    wyswietlanie(pol1);
+
+    wyswietlanie();
 
 }
 
-void MainWindow::wyswietlanie(Dostepne_polaczenia  pol[])
+void MainWindow::wyswietlanie()
 {
-    Lot *sam1 = new Lot(156,"Airbus A319",156,"WAW");
+/*
+    Lot *sam1 = new Lot(156,"Airbus A319",156,"WAW","NO332");
     loty.push_back(*sam1);
-    Lot *sam2 = new Lot(156,"Airbus A319",156,"OSL");
+    Lot *sam2 = new Lot(156,"Airbus A319",156,"OSL","NO29");
     loty.push_back(*sam2);
-    Lot *sam3 = new Lot(156,"Airbus A319",156,"KEF");
+    Lot *sam3 = new Lot(156,"Airbus A319",156,"KEF","NO32");
     loty.push_back(*sam3);
-    Lot *sam4 = new Lot(156,"Airbus A319",156,"JFK");
+    Lot *sam4 = new Lot(156,"Airbus A319",156,"JFK","NO21");
     loty.push_back(*sam4);
+*/
+
     for (int i=0;i<n;i++)
     {
-        pol1[i]= Dostepne_polaczenia(loty[i]);
+
+        Dostepne_polaczenia *polaczenie= new Dostepne_polaczenia(loty[i]);
+        pol.push_back(*polaczenie);
     }
+
     for(int i=0;i<n;i++){
 MainWindow::ui->tabelaLotow->setItem(i,0,new QTableWidgetItem(pol[i].lotnisko_wylotu));
 MainWindow::ui->tabelaLotow->setItem(i,1,new QTableWidgetItem(pol[i].lotnisko_docelowe));
@@ -191,9 +200,9 @@ void MainWindow::on_przyciskSpr_clicked()
 
 for(int x=0;x<licznik_kart;x++)
 {
-    qDebug()<<"Nr miejsca: "<<karty[x].pokaz_karte()<<"Czy bagaz: "<<karty[x].czyBagaz()<<"x: "<<x<<"Czy match "<<karty[x].match(Snazw,Snr);
+    qDebug()<<"Nr miejsca: "<<karty[x].pokaz_karte()<<"Czy bagaz: "<<karty[x].czyBagaz()<<"x: "<<x<<"Czy match "<<karty[x].match(Snazw,Snr)<<"Nazwisko"<<karty[x].pokazNazwisko()<<"Wprowadzone nazwisko:"<<Snazw ;
 
-        if(karty[x].match(Snazw,Snr)==true)
+        if(karty[x].pokazNazwisko() == Snazw && karty[x].pokazNr_tel() == Snr)
         {
             ui->spinBoxZarezerw->setValue(karty[x].pokaz_karte());
             ui->stackedWidget->setCurrentWidget(ui->stronaKartaZarz);
@@ -264,6 +273,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 {
   zapisywanieRezerw();
   zapisywanieKart();
+  zapisywanieLotow();
 
 }
 
@@ -282,7 +292,7 @@ void MainWindow::on_przyciskAkceptujZarezerw_clicked()
 
     if (loty[wybrany_lot].zajmij_miejsce(ui->spinBox->value()))
          {
-    karty[licznik_kart].wybierz_miejsce(ui->spinBox->value());
+    karty[ktora_rezerwacja].wybierz_miejsce(ui->spinBox->value());
     }
     ui->stackedWidget->setCurrentWidget(ui->stronaLoty);
 }
@@ -364,8 +374,8 @@ void MainWindow::zapisywanieKart()
 
     for (int i=0;i<licznik_kart;i++)
        {
-        out<<karty[i].imie<<karty[i].nazwisko<<karty[i].kraj<<karty[i].nr_tel<<karty[i].nr_lotu<<karty[i].data_odlotu<<karty[i].anulowana;
-        out<<karty[i].priority<<karty[i].bagaz<<karty[i].nr_miejsca<<karty[i].status_platnosci;
+        out<<karty[i].imie<<karty[i].nazwisko<<karty[i].kraj<<karty[i].nr_tel<<karty[i].nr_lotu<<karty[i].data_odlotu<<karty[i].anulowana
+          <<karty[i].priority<<karty[i].bagaz<<karty[i].nr_miejsca<<karty[i].status_platnosci;
        }
     plik_karty.flush();
     plik_karty.close();
@@ -398,15 +408,76 @@ void MainWindow::wczytywanieKart()
     plik_karty.close();
 }
 
-
-void MainWindow::on_przyciskStrglRezerwacje_clicked()
+void MainWindow::zapisywanieLotow()
 {
-    ui->stackedWidget->setCurrentWidget(ui->stronaLoty);
+    QFile plik_loty("lotyplik.txt");
+    if(!plik_loty.open(QIODevice::WriteOnly))
+    {
+        return;
+    }
+    QDataStream out(&plik_loty);
+    out.setVersion(QDataStream::Qt_5_10);
+
+    out<<n;
+
+    for (int i=0;i<n;i++)
+    {
+       out<<loty[i].ilosc_miejsc<<loty[i].nazwa<<loty[i].wolne_miejsca<<loty[i].lotnisko_docelowe<<loty[i].nr_lotu<<loty[i].data_odlotu;
+    }
+
+    plik_loty.flush();
+    plik_loty.close();
 }
+void MainWindow::wczytywanieLotow()
+{
+    QFile plik_loty("lotyplik.txt");
+    if(!plik_loty.open(QIODevice::ReadOnly))
+    {
+        return;
+    }
+    QDataStream in(&plik_loty);
+    in.setVersion(QDataStream::Qt_5_10);
+
+    in>>n;
+    qDebug()<<n;
+    for (int i=0;i<n;i++)
+    {
+        Lot *lot1 = new Lot();
+        loty.insert(i,*lot1);
+
+       in>>loty[i].ilosc_miejsc>>loty[i].nazwa>>loty[i].wolne_miejsca>>loty[i].lotnisko_docelowe>>loty[i].nr_lotu>>loty[i].data_odlotu;
+    }
+
+
+    plik_loty.close();
+}
+
 
 
 
 void MainWindow::on_przyciskDodajLot_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->stronaDodajLot);
+}
+
+void MainWindow::on_przyciskDodaj2_clicked()
+{
+    QString Ddocelowe=ui->lineLotniskoDocelowe->text();
+    QString Dnrlotu=ui->lineNrLotu->text();
+    QString Ddata=ui->lineDataLotu->text();
+    qDebug()<<"zaladowalo tekst";
+    loty.insert(n,*admin1->dodaj_lot(Ddocelowe,Dnrlotu,Ddata));
+    qDebug()<<"utworzylo lot";
+    Dostepne_polaczenia *polaczenie= new Dostepne_polaczenia(loty[n]);
+    pol.push_back(*polaczenie);
+    ui->tabelaLotow->insertRow(n);
+    qDebug()<<"dodalo wiersz";
+    MainWindow::ui->tabelaLotow->setItem(n,0,new QTableWidgetItem(pol[n].lotnisko_wylotu));
+    MainWindow::ui->tabelaLotow->setItem(n,1,new QTableWidgetItem(pol[n].lotnisko_docelowe));
+    MainWindow::ui->tabelaLotow->setItem(n,2,new QTableWidgetItem(pol[n].godzina_odlotu));
+    MainWindow::ui->tabelaLotow->setItem(n,3,new QTableWidgetItem(pol[n].godzina_przylotu));
+    MainWindow::ui->tabelaLotow->setItem(n,4,new QTableWidgetItem(pol[n].data_lotu));
+     qDebug()<<"zaladowalo do kolumn";
+    n++;
+    ui->stackedWidget->setCurrentWidget(ui->stronaLoty);
 }

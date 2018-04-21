@@ -4,6 +4,7 @@
 #include <QDebug>
 #include "samolot.h"
 
+
 class Lot;
 class MainWindow;
 
@@ -54,6 +55,8 @@ public:
     bool match(QString nazwisk, QString nrtel);
     bool czyBagaz(); // zwraca true jeżeli pasażer ma już wykupiony bagaż
     bool czyPriority(); // zwraca true jeżeli pasażer ma już wykupiony Priority Pass
+    QString pokazNazwisko(){return nazwisko;}
+    QString pokazNr_tel(){return nr_tel;}
 
 };
 

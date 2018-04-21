@@ -14,7 +14,7 @@ QString Samolot::wysw()
 }
 
 
-Lot::Lot(int n, QString name, int wolne, QString docelowe, QString data , QString nr) : Samolot(n, name)
+Lot::Lot(int n, QString name, int wolne, QString docelowe,QString nr, QString data  ) : Samolot(n, name)
 {
     for (int i=0;i<=wolne;i++)
     {
@@ -27,7 +27,7 @@ Lot::Lot(int n, QString name, int wolne, QString docelowe, QString data , QStrin
     cena_pdst= ustaw_cene();
 
 }
-Lot::Lot(Samolot & sam, int wolne, QString docelowe, QString data , QString nr) : Samolot(sam)
+Lot::Lot(Samolot & sam, int wolne, QString docelowe,QString nr, QString data  ) : Samolot(sam)
 {
     for (int i=0;i<=wolne;i++)
     {

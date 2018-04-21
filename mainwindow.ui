@@ -294,8 +294,8 @@
          <rect>
           <x>9</x>
           <y>343</y>
-          <width>19</width>
-          <height>13</height>
+          <width>26</width>
+          <height>16</height>
          </rect>
         </property>
         <property name="text">
@@ -332,19 +332,6 @@
         </property>
         <property name="text">
          <string>Dalej</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="przyciskStrglRezerwacje">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>500</y>
-          <width>101</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Strona główna</string>
         </property>
        </widget>
       </widget>
@@ -904,7 +891,90 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="stronaDodajLot"/>
+      <widget class="QWidget" name="stronaDodajLot">
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>60</y>
+          <width>119</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Lotnisko docelowe</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>120</y>
+          <width>60</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Data lotu</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>180</y>
+          <width>70</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Numer lotu</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineLotniskoDocelowe">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>60</y>
+          <width>121</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineDataLotu">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>120</y>
+          <width>121</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineNrLotu">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>180</y>
+          <width>121</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="przyciskDodaj2">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>490</y>
+          <width>75</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Dodaj!</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>
