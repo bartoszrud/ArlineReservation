@@ -22,7 +22,6 @@ public:
 
    Dostepne_polaczenia(const Lot & lot, QString Klotnisko_wylotu="WRO", QString Kgodzina_odlotu="12:30", QString Kgodzina_przylotu="14:40",int Kindeks=1);
    Dostepne_polaczenia(QString Kdata_lotu="11.11.2018",QString Klotnisko_docelowe="JFK", QString Klotnisko_wylotu="WRO", QString Kgodzina_odlotu="12:30", QString Kgodzina_przylotu="14:40",int Kindeks=1);
-   Dostepne_polaczenia* dodaj_polaczenie();
    void wczytaj(Lot& lot);
 
 

@@ -56,6 +56,14 @@ private slots:
 
     void on_przyciskDodaj2_clicked();
 
+    void on_przyciskUsunLot_clicked();
+
+    void on_przyciskAnulowanieRezerw_clicked();
+
+
+
+    void on_przyciskAnuluj_clicked();
+
 public slots:
     void on_PrzyciskZaloguj_clicked();
     void rezerwujLot();

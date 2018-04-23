@@ -9,14 +9,13 @@
 #include <QString>
 #include <dostepne_polaczenia.h>
 #include <QList>
-#include <fstream>
 #include <ctime>
-
 #include <QFile>
 #include <QCloseEvent>
+#include <QPixmap>
 
 
- int n = 4;
+ int n = 0;
  int licznik_rezerwacji=0;
  int licznik_kart=0;
  int ktora_rezerwacja=0;
@@ -24,18 +23,16 @@
 
  Admin *admin1=new Admin;
 
- //Dostepne_polaczenia *pol1 = new Dostepne_polaczenia[n];
  QList<Rezerwacje> rezerwacje;
  QList<Karta_pokladowa> karty;
  QList<Lot> loty;
  QList<Dostepne_polaczenia> pol;
 
 
-
+void wczytywanieLotow();
 void wyswietlanie();
 void wczytywanieRezerw();
 void wczytywanieKart();
-void wczytywanieLotow();
 
 
 
@@ -46,10 +43,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QPixmap miejsca(":/siedzenia/A319 Kadrowane530PNG.png");
+    ui->siedzenia->setPixmap(miejsca);
+    ui->siedzenia2->setPixmap(miejsca);
    setupConnections();
      //ui->label->setText(sam1->wysw()); //wyświetla nazwę samolotu, ale będzie trzeba zaprzyjaźnić żeby nie robić osobnych funkcji dla kazdej zmiennej
     ui->statusBar->addPermanentWidget(ui->PrzyciskAdmin); //Przycisk w StatusBar
-   wczytywanieLotow();
+    wczytywanieLotow();
+
     wczytywanieRezerw();
     wczytywanieKart();
 
@@ -57,32 +58,34 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
+
+
+
 void MainWindow::wyswietlanie()
 {
-/*
-    Lot *sam1 = new Lot(156,"Airbus A319",156,"WAW","NO332");
-    loty.push_back(*sam1);
-    Lot *sam2 = new Lot(156,"Airbus A319",156,"OSL","NO29");
-    loty.push_back(*sam2);
-    Lot *sam3 = new Lot(156,"Airbus A319",156,"KEF","NO32");
-    loty.push_back(*sam3);
-    Lot *sam4 = new Lot(156,"Airbus A319",156,"JFK","NO21");
-    loty.push_back(*sam4);
-*/
 
+  int comb=1;
     for (int i=0;i<n;i++)
     {
 
+
         Dostepne_polaczenia *polaczenie= new Dostepne_polaczenia(loty[i]);
         pol.push_back(*polaczenie);
+        ui->tabelaLotow->insertRow(i);
+        ui->tabelaLotowAdmin->insertRow(i);
+        ui->comboBox->addItem(QString::number(comb));
+        ui->comboBoxAdmin->addItem(QString::number(comb));
+        comb++;
     }
 
-    for(int i=0;i<n;i++){
+    for(int i=0;i<n;i++)
+    {
 MainWindow::ui->tabelaLotow->setItem(i,0,new QTableWidgetItem(pol[i].lotnisko_wylotu));
 MainWindow::ui->tabelaLotow->setItem(i,1,new QTableWidgetItem(pol[i].lotnisko_docelowe));
 MainWindow::ui->tabelaLotow->setItem(i,2,new QTableWidgetItem(pol[i].godzina_odlotu));
 MainWindow::ui->tabelaLotow->setItem(i,3,new QTableWidgetItem(pol[i].godzina_przylotu));
 MainWindow::ui->tabelaLotow->setItem(i,4,new QTableWidgetItem(pol[i].data_lotu));
+
 MainWindow::ui->tabelaLotowAdmin->setItem(i,0,new QTableWidgetItem(pol[i].lotnisko_wylotu));
 MainWindow::ui->tabelaLotowAdmin->setItem(i,1,new QTableWidgetItem(pol[i].lotnisko_docelowe));
 MainWindow::ui->tabelaLotowAdmin->setItem(i,2,new QTableWidgetItem(pol[i].godzina_odlotu));
@@ -119,7 +122,7 @@ void MainWindow::on_przyciskRezerwuj_clicked()
     qDebug()<<"licznik rezerwacji"<<licznik_rezerwacji<<"licznik kart"<<licznik_kart;
     wybrany_lot=ui->comboBox->currentIndex();
     ui->stackedWidget->setCurrentWidget(ui->stronaRezerwacje);
-   // wczytywanieKart();
+
 }
 
 void MainWindow::on_PrzyciskAdmin_clicked()
@@ -127,11 +130,6 @@ void MainWindow::on_PrzyciskAdmin_clicked()
 
     ui->stackedWidget->setCurrentWidget(ui->LogowanieAdmin);
 
-    /*
-   hide();
-   adminwindow *admwin =new adminwindow(this);
-    admwin->show();
-    */
 
 }
 
@@ -200,7 +198,7 @@ void MainWindow::on_przyciskSpr_clicked()
 
 for(int x=0;x<licznik_kart;x++)
 {
-    qDebug()<<"Nr miejsca: "<<karty[x].pokaz_karte()<<"Czy bagaz: "<<karty[x].czyBagaz()<<"x: "<<x<<"Czy match "<<karty[x].match(Snazw,Snr)<<"Nazwisko"<<karty[x].pokazNazwisko()<<"Wprowadzone nazwisko:"<<Snazw ;
+    qDebug()<<"Nr miejsca: "<<karty[x].pokaz_karte()<<"Czy bagaz: "<<karty[x].czyBagaz()<<"x: "<<x<<"Nazwisko"<<karty[x].pokazNazwisko()<<"Wprowadzone nazwisko:"<<Snazw ;
 
         if(karty[x].pokazNazwisko() == Snazw && karty[x].pokazNr_tel() == Snr)
         {
@@ -265,9 +263,6 @@ void MainWindow::on_przyciskStrgl_clicked()
 
 
 
-//const char FileName[] = "plik.bin";
-
-
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
@@ -290,9 +285,11 @@ void MainWindow::on_przyciskAkceptujZarezerw_clicked()
         karty[ktora_rezerwacja].dodaj_priority();
     }
 
-    if (loty[wybrany_lot].zajmij_miejsce(ui->spinBox->value()))
+    if (loty[wybrany_lot].zajmij_miejsce(ui->spinBoxZarezerw->value()))
          {
-    karty[ktora_rezerwacja].wybierz_miejsce(ui->spinBox->value());
+        loty[wybrany_lot].zwolnij_miejsce(karty[ktora_rezerwacja].pokaz_karte());
+    karty[ktora_rezerwacja].wybierz_miejsce(ui->spinBoxZarezerw->value());
+
     }
     ui->stackedWidget->setCurrentWidget(ui->stronaLoty);
 }
@@ -309,6 +306,8 @@ void MainWindow::on_przyciskZaplac_clicked()
 {
     if(ui->lineNrKarty->text().length() ==16 &&ui->lineCVC->text().length()==3 )
     {
+        int tymczasowa=licznik_kart-1;
+    karty[tymczasowa].potwierdzPlatnosc();
     ui->stackedWidget->setCurrentWidget(ui->stronaLoty);
     ui->lineNrKarty->clear();
     ui->lineCVC->clear();
@@ -374,8 +373,8 @@ void MainWindow::zapisywanieKart()
 
     for (int i=0;i<licznik_kart;i++)
        {
-        out<<karty[i].imie<<karty[i].nazwisko<<karty[i].kraj<<karty[i].nr_tel<<karty[i].nr_lotu<<karty[i].data_odlotu<<karty[i].anulowana
-          <<karty[i].priority<<karty[i].bagaz<<karty[i].nr_miejsca<<karty[i].status_platnosci;
+       // out<<karty[i].imie<<karty[i].nazwisko<<karty[i].kraj<<karty[i].nr_tel<<karty[i].nr_lotu<<karty[i].data_odlotu<<karty[i].anulowana
+         out <<karty[i].priority<<karty[i].bagaz<<karty[i].nr_miejsca<<karty[i].status_platnosci;
        }
     plik_karty.flush();
     plik_karty.close();
@@ -393,15 +392,24 @@ void MainWindow::wczytywanieKart()
 
     for (int i=0;i<licznik_kart;i++)
         {
-        Karta_pokladowa *kar1=new Karta_pokladowa();
-      //  qDebug()<<rezerwacje[i].imie;
+        Karta_pokladowa *kar1=new Karta_pokladowa(rezerwacje[i]);
         karty.insert(i,*kar1);
     }
     for (int i=0;i<licznik_kart;i++)
         {
-        in>>karty[i].imie>>karty[i].nazwisko>>karty[i].kraj>>karty[i].nr_tel>>karty[i].nr_lotu>>karty[i].data_odlotu>>karty[i].anulowana>>karty[i].priority>>karty[i].bagaz>>karty[i].nr_miejsca>>karty[i].status_platnosci;
-        //in>>karty[i].priority>>karty[i].bagaz>>karty[i].nr_miejsca>>karty[i].status_platnosci;
-        qDebug()<<karty[i].nazwisko<<karty[i].nr_tel<<licznik_kart<<licznik_rezerwacji<<i;
+        //in>>karty[i].imie>>karty[i].nazwisko>>karty[i].kraj>>karty[i].nr_tel>>karty[i].nr_lotu>>karty[i].data_odlotu>>karty[i].anulowana>>karty[i].priority>>karty[i].bagaz>>karty[i].nr_miejsca>>karty[i].status_platnosci;
+        in>>karty[i].priority>>karty[i].bagaz>>karty[i].nr_miejsca>>karty[i].status_platnosci;
+        qDebug()<<karty[i].nazwisko<<karty[i].nr_tel<<licznik_kart<<licznik_rezerwacji<<i<<"Nr miejsca:"<<karty[i].pokaz_karte()<<karty[i].podajNr_lotu()<<karty[i].czy_anulowana()<<"status platnosci"<<karty[i].status_platnosci;
+        for(int k=0;k<n;k++)
+        {
+            qDebug()<<karty[i].podajNr_lotu()<<loty[k].podaj_nr_lotu()<< karty[i].podajDate_lotu()<<loty[k].podaj_date();
+            if(karty[i].podajNr_lotu()==loty[k].podaj_nr_lotu() && karty[i].podajDate_lotu()==loty[k].podaj_date() && karty[i].czy_anulowana()==false)
+            {
+                qDebug()<<"Znaleziono zgodność"<<karty[i].nazwisko<<karty[i].pokaz_karte();
+
+                loty[k].zajmij_miejsce(karty[i].pokaz_karte());
+            }
+        }
 
         }
 
@@ -422,7 +430,8 @@ void MainWindow::zapisywanieLotow()
 
     for (int i=0;i<n;i++)
     {
-       out<<loty[i].ilosc_miejsc<<loty[i].nazwa<<loty[i].wolne_miejsca<<loty[i].lotnisko_docelowe<<loty[i].nr_lotu<<loty[i].data_odlotu;
+
+     out<<loty[i].ilosc_miejsc<<loty[i].nazwa<<loty[i].wolne_miejsca<<loty[i].lotnisko_docelowe<<loty[i].nr_lotu<<loty[i].data_odlotu;
     }
 
     plik_loty.flush();
@@ -454,7 +463,6 @@ void MainWindow::wczytywanieLotow()
 
 
 
-
 void MainWindow::on_przyciskDodajLot_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->stronaDodajLot);
@@ -478,6 +486,62 @@ void MainWindow::on_przyciskDodaj2_clicked()
     MainWindow::ui->tabelaLotow->setItem(n,3,new QTableWidgetItem(pol[n].godzina_przylotu));
     MainWindow::ui->tabelaLotow->setItem(n,4,new QTableWidgetItem(pol[n].data_lotu));
      qDebug()<<"zaladowalo do kolumn";
+
     n++;
+    ui->comboBox->addItem(QString::number(n));
     ui->stackedWidget->setCurrentWidget(ui->stronaLoty);
+}
+
+void MainWindow::on_przyciskUsunLot_clicked()
+{
+    int dousuniecia = ui->comboBoxAdmin->currentIndex();
+    loty.removeAt(dousuniecia);
+    ui->tabelaLotow->removeRow(dousuniecia);
+    ui->tabelaLotowAdmin->removeRow(dousuniecia);
+    n--;
+
+}
+
+void MainWindow::on_przyciskAnulowanieRezerw_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->stronaAnulowanie);
+}
+
+
+
+void MainWindow::on_przyciskAnuluj_clicked()
+{
+    QString Anazw = ui->lineNazwiskoAnulacja->text();
+    QString Anr=ui->lineNrTelAnulacja->text();
+
+    for(int j=0;j<licznik_rezerwacji;j++)
+        {
+
+            if(rezerwacje[j].pokazNazwisko() == Anazw && rezerwacje[j].pokazNr_tel() == Anr)
+            {
+               rezerwacje[j].anuluj();
+            }
+         }
+for(int x=0;x<licznik_kart;x++)
+    {
+
+        if(karty[x].pokazNazwisko() == Anazw && karty[x].pokazNr_tel() == Anr)
+        {
+           karty[x].anuluj();
+           for (int k=0;k<n;k++)
+           {
+           if(karty[x].podajNr_lotu()==loty[k].podaj_nr_lotu() && karty[x].podajDate_lotu()==loty[k].podaj_date() )
+           {
+
+               loty[k].zwolnij_miejsce(karty[x].pokaz_karte());
+               break;
+           }
+
+        }        ui->stackedWidget->setCurrentWidget(ui->AdminPanel);
+                qDebug()<<"czy anulowana"<<karty[x].czy_anulowana();
+           break;
+        }
+
+    }
+
 }

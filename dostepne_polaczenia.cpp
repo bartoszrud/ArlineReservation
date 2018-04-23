@@ -28,11 +28,5 @@ Dostepne_polaczenia::Dostepne_polaczenia(QString Kdata_lotu,QString Klotnisko_do
 
 }
 
-Dostepne_polaczenia* Dostepne_polaczenia::dodaj_polaczenie( )
-{
-    //Dostepne_polaczenia *p=new Dostepne_polaczenia("l","DF","FD",1); // to nam nic nie da
-
-    return 0;
-}
 
 

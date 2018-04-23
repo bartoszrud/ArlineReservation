@@ -3,7 +3,8 @@
 #include <QString>
 #include "mainwindow.h"
 
-class Karta_pokladowa;
+class Rezerwacje;
+
 
 class Admin
 {
@@ -14,8 +15,8 @@ public:
     Admin();
     Lot* dodaj_lot(QString docelowe,  QString nr_lotu, QString data);
     void usun_lot();
-    void anuluj_rezerwacje();
     bool zaloguj(QString h);
+    //void anuluj_rezerwacje(Rezerwacje & r);
 };
 
 #endif // ADMIN_H

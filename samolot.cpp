@@ -1,5 +1,6 @@
 #include "samolot.h"
 
+
 Samolot::Samolot(int n, QString name)
 {
     nazwa=name;
@@ -13,6 +14,10 @@ QString Samolot::wysw()
 
 }
 
+int Samolot::ile_miejsc()
+{
+    return ilosc_miejsc;
+}
 
 Lot::Lot(int n, QString name, int wolne, QString docelowe,QString nr, QString data  ) : Samolot(n, name)
 {
@@ -41,6 +46,10 @@ Lot::Lot(Samolot & sam, int wolne, QString docelowe,QString nr, QString data  ) 
     cena_pdst= ustaw_cene();
 }
 
+int Lot::ile_miejsc()
+{
+    return wolne_miejsca;
+}
 QString Lot::podaj_nr_lotu()
 {
     return nr_lotu;
@@ -56,13 +65,26 @@ double Lot::ustaw_cene()
 bool Lot::zajmij_miejsce(int miejsce)
 {
 
-    if (miejsca[miejsce] == true && miejsce!=0)
+    if (miejsca[miejsce] == true && miejsce>0)
     {
         miejsca[miejsce] = false;
         wolne_miejsca--;
         return true;
     } else return false;
+
 }
+
+bool Lot::zwolnij_miejsce(int miejsce)
+{
+    if (miejsca[miejsce] == false && miejsce>0)
+    {
+        miejsca[miejsce] = true;
+        wolne_miejsca++;
+        return true;
+    } else return false;
+}
+
+
 
 double Lot::podaj_cene(bool bagaz, bool priority)
 {
@@ -78,3 +100,4 @@ double Lot::podaj_cene(bool bagaz, bool priority)
 
     return cena_aktualna ;
 }
+

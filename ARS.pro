@@ -41,11 +41,10 @@ HEADERS += \
     admin.h \
     dostepne_polaczenia.h \
     baza_danych.h \
-    platnosc.h \
-    przeciazenia.h
+    platnosc.h
 
 FORMS += \
         mainwindow.ui
 
 RESOURCES += \
-    zrodla.qrc
+    img/siedzenia.qrc

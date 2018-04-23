@@ -83,26 +83,6 @@
           <height>22</height>
          </rect>
         </property>
-        <item>
-         <property name="text">
-          <string>1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>4</string>
-         </property>
-        </item>
        </widget>
        <widget class="QTableWidget" name="tabelaLotow">
         <property name="geometry">
@@ -110,32 +90,12 @@
           <x>9</x>
           <y>9</y>
           <width>531</width>
-          <height>151</height>
+          <height>211</height>
          </rect>
         </property>
         <property name="editTriggers">
          <set>QAbstractItemView::NoEditTriggers</set>
         </property>
-        <row>
-         <property name="text">
-          <string>1</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>2</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>3</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>4</string>
-         </property>
-        </row>
         <column>
          <property name="text">
           <string>Lotnisko wylotu</string>
@@ -415,12 +375,12 @@
          <rect>
           <x>0</x>
           <y>40</y>
-          <width>248</width>
+          <width>268</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
-         <string>Chcę wykupić bagaż rejstrowany!</string>
+         <string>Chcę wykupić bagaż rejstrowany! - 110zł</string>
         </property>
        </widget>
        <widget class="QCheckBox" name="checkBagaz">
@@ -441,12 +401,12 @@
          <rect>
           <x>0</x>
           <y>70</y>
-          <width>211</width>
+          <width>219</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
-         <string>Chcę wykupić priority pass!</string>
+         <string>Chcę wykupić priority pass! - 50zł</string>
         </property>
        </widget>
        <widget class="QCheckBox" name="checkPriority">
@@ -520,6 +480,44 @@
         </property>
         <property name="text">
          <string>Strona główna</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="siedzenia">
+        <property name="geometry">
+         <rect>
+          <x>600</x>
+          <y>-10</y>
+          <width>164</width>
+          <height>541</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>164</width>
+          <height>530</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_19">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>260</y>
+          <width>427</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Miejsca 1-6 oraz 55-66 to miejsca z większą przestrzenią na nogi!</string>
         </property>
        </widget>
       </widget>
@@ -628,12 +626,12 @@
          <rect>
           <x>0</x>
           <y>40</y>
-          <width>219</width>
+          <width>270</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
-         <string>Chcę wykupić bagaż rejstrowany!</string>
+         <string>Chcę wykupić bagaż rejstrowany! - 110zł</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_8">
@@ -641,12 +639,12 @@
          <rect>
           <x>0</x>
           <y>70</y>
-          <width>178</width>
+          <width>223</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
-         <string>Chcę wykupić priority pass!</string>
+         <string>Chcę wykupić priority pass! - 50zł </string>
         </property>
        </widget>
        <widget class="QLabel" name="label_9">
@@ -665,7 +663,7 @@
        <widget class="QCheckBox" name="checkBagazZarezerw">
         <property name="geometry">
          <rect>
-          <x>270</x>
+          <x>280</x>
           <y>40</y>
           <width>70</width>
           <height>17</height>
@@ -678,7 +676,7 @@
        <widget class="QCheckBox" name="checkPriorityZarezerw">
         <property name="geometry">
          <rect>
-          <x>270</x>
+          <x>280</x>
           <y>70</y>
           <width>70</width>
           <height>17</height>
@@ -728,6 +726,57 @@
         </property>
         <property name="text">
          <string>Strona główna</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="siedzenia2">
+        <property name="geometry">
+         <rect>
+          <x>610</x>
+          <y>0</y>
+          <width>164</width>
+          <height>530</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>164</width>
+          <height>530</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_20">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>260</y>
+          <width>427</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Miejsca 1-6 oraz 55-66 to miejsca z większą przestrzenią na nogi!</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_21">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>10</y>
+          <width>320</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Zostanie obciążona karta podana przy rezerwacji</string>
         </property>
        </widget>
       </widget>
@@ -782,32 +831,12 @@
           <x>10</x>
           <y>10</y>
           <width>531</width>
-          <height>151</height>
+          <height>231</height>
          </rect>
         </property>
         <property name="editTriggers">
          <set>QAbstractItemView::NoEditTriggers</set>
         </property>
-        <row>
-         <property name="text">
-          <string>1</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>2</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>3</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>4</string>
-         </property>
-        </row>
         <column>
          <property name="text">
           <string>Lotnisko wylotu</string>
@@ -843,26 +872,6 @@
           <height>22</height>
          </rect>
         </property>
-        <item>
-         <property name="text">
-          <string>1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>4</string>
-         </property>
-        </item>
        </widget>
        <widget class="QPushButton" name="przyciskUsunLot">
         <property name="geometry">
@@ -888,6 +897,19 @@
         </property>
         <property name="text">
          <string>Dodaj lot</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="przyciskAnulowanieRezerw">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>500</y>
+          <width>155</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Anulowanie rezerwacji</string>
         </property>
        </widget>
       </widget>
@@ -972,6 +994,80 @@
         </property>
         <property name="text">
          <string>Dodaj!</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="stronaAnulowanie">
+       <widget class="QLabel" name="label_16">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>30</y>
+          <width>298</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Wpisz dane rezerwacji którą chcesz anulować</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_17">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>160</y>
+          <width>59</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Nazwisko</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_18">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>100</y>
+          <width>99</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Numer telefonu</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineNrTelAnulacja">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>100</y>
+          <width>161</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineNazwiskoAnulacja">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>160</y>
+          <width>161</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="przyciskAnuluj">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>490</y>
+          <width>81</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Anuluj!</string>
         </property>
        </widget>
       </widget>
