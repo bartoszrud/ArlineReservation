@@ -19,7 +19,7 @@ int Samolot::ile_miejsc()
     return ilosc_miejsc;
 }
 
-Lot::Lot(int n, QString name, int wolne, QString docelowe,QString nr, QString data  ) : Samolot(n, name)
+Lot::Lot(int n, QString name, int wolne, QString docelowe,QString nr, QString data,QString wylotu  ) : Samolot(n, name)
 {
     for (int i=0;i<=wolne;i++)
     {
@@ -27,12 +27,13 @@ Lot::Lot(int n, QString name, int wolne, QString docelowe,QString nr, QString da
     }
     wolne_miejsca=wolne;
     lotnisko_docelowe=docelowe;
+    lotnisko_wylotu=wylotu;
     data_odlotu=data;
     nr_lotu=nr;
     cena_pdst= ustaw_cene();
 
 }
-Lot::Lot(Samolot & sam, int wolne, QString docelowe,QString nr, QString data  ) : Samolot(sam)
+Lot::Lot(Samolot & sam, int wolne, QString docelowe,QString nr, QString data,QString wylotu  ) : Samolot(sam)
 {
     for (int i=0;i<=wolne;i++)
     {
@@ -41,6 +42,7 @@ Lot::Lot(Samolot & sam, int wolne, QString docelowe,QString nr, QString data  ) 
 
     wolne_miejsca=wolne;
     lotnisko_docelowe=docelowe;
+    lotnisko_wylotu=wylotu;
     data_odlotu=data;
     nr_lotu=nr;
     cena_pdst= ustaw_cene();
@@ -100,4 +102,7 @@ double Lot::podaj_cene(bool bagaz, bool priority)
 
     return cena_aktualna ;
 }
-
+Lot::~Lot()
+{
+    delete[] miejsca;
+}

@@ -33,7 +33,11 @@ void Rezerwacje::anuluj()
 {
     anulowana=true;
 }
-
+Rezerwacje & Rezerwacje::operator --()
+{
+    this->anuluj();
+    return *this;
+}
 
 Karta_pokladowa::Karta_pokladowa() : Rezerwacje()
 {
@@ -67,8 +71,7 @@ bool Karta_pokladowa::czyPriority()
     } else return false;
 }
 
-bool Karta_pokladowa::potwierdzPlatnosc()
+void Karta_pokladowa::potwierdzPlatnosc()
 {
     status_platnosci=true;
 }
-

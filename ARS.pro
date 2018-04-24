@@ -28,20 +28,16 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     samolot.cpp \
-    rezerwacje.cpp \
     admin.cpp \
     dostepne_polaczenia.cpp \
-    baza_danych.cpp \
-    platnosc.cpp
+    rezerwacje.cpp
 
 HEADERS += \
         mainwindow.h \
     samolot.h \
     rezerwacje.h \
     admin.h \
-    dostepne_polaczenia.h \
-    baza_danych.h \
-    platnosc.h
+    dostepne_polaczenia.h
 
 FORMS += \
         mainwindow.ui

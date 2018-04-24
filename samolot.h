@@ -10,9 +10,9 @@
 class Karta_pokladowa;
 
 class Samolot
-{
+{     // friend void MainWindow::wczytywanieLotow(); deklaracja przyjazni dla funkcji, tu nie działa
   //  friend void MainWindow::zapisywanieLotow();
-   // friend void MainWindow::wczytywanieLotow(); deklaracja przyjazni dla funkcji, tu nie działa
+
 protected:
     QString nazwa;
     int ilosc_miejsc;
@@ -39,21 +39,23 @@ class Lot : public Samolot
     int wolne_miejsca;
     QString nr_lotu;
     QString lotnisko_docelowe;
+    QString lotnisko_wylotu;
     double cena_pdst;
     QString data_odlotu;
-    double ustaw_cene();
+    double ustaw_cene(); // ustawia losową cenę przy tworzeniu obiektu
 
 
 public:
     virtual int ile_miejsc();
     double ustaw_cene(bool bagaz, bool priority); //ustawia cenę zależnie od tego czy pasażer wybrał bagaż i/lub priority
-    Lot(int n=156, QString name="Airbus A319",int wolne=156, QString docelowe="KEF", QString nr="NO217", QString data="01.01.2019");
-    Lot(Samolot & sam, int wolne=156, QString docelowe="WRO",QString nr="NO217", QString data="01.01.2019" );
+    Lot(int n=156, QString name="Airbus A319",int wolne=156, QString docelowe="KEF", QString nr="NO217", QString data="01.01.2019",QString wylotu = "WRO");
+    Lot(Samolot & sam, int wolne=156, QString docelowe="WRO",QString nr="NO217", QString data="01.01.2019", QString wylotu = "WRO" );
     bool zajmij_miejsce(int miejsce); //zajmuje wybrane miejsce i zwraca true jeżeli miejsce zostało poprawnie zajęte lub false jeżeli wybrane miejsce było już zajęte
     bool zwolnij_miejsce(int miejsce); //zwalnia miejsce i zwraca true jeśli miejsce zostało poprawnie zwolnione lub false w przeciwnym wypadku
     QString podaj_nr_lotu();
     QString podaj_date() {return data_odlotu;}
     double podaj_cene(bool bagaz, bool priority);
+    ~Lot();
 
 
 };

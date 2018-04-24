@@ -13,10 +13,9 @@ const QString haslo="admin123";
 public:
 
     Admin();
-    Lot* dodaj_lot(QString docelowe,  QString nr_lotu, QString data);
-    void usun_lot();
+    Lot* dodaj_lot(QString docelowe,  QString nr_lotu, QString data, QString wylotu);
     bool zaloguj(QString h);
-    //void anuluj_rezerwacje(Rezerwacje & r);
+    void anuluj_rezerwacje(Rezerwacje & r);
 };
 
 #endif // ADMIN_H

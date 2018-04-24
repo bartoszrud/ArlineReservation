@@ -82,6 +82,8 @@ public:
     void wczytywanieKart();
     void zapisywanieLotow();
     void wczytywanieLotow();
+    void zapisywaniePolaczen();
+    void wczytywaniePolaczen();
 
 };
 

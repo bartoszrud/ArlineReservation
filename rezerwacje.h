@@ -12,18 +12,17 @@ class Rezerwacje
 {
 friend void MainWindow::wczytywanieRezerw();
 friend void MainWindow::zapisywanieRezerw();
-friend void MainWindow::wczytywanieKart();
-friend void MainWindow::zapisywanieKart();
+
 
 
 QString imie;
 QString kraj;
-protected:
+bool anulowana;
 QString nr_lotu;
 QString data_odlotu;
 QString nazwisko;
 QString nr_tel;
-bool anulowana;
+
 
 public:
 
@@ -37,6 +36,7 @@ public:
     QString pokazNr_tel(){return nr_tel;}
     QString podajNr_lotu() {return nr_lotu;}
     QString podajDate_lotu() {return data_odlotu;}
+    Rezerwacje & operator --();  // "--" powoduje anulowanie danej rezerwacji
 
 
 };
@@ -60,7 +60,7 @@ public:
     int pokaz_karte(); //zwraca nr miejsca ktróre wybrał pasażer
     bool czyBagaz(); // zwraca true jeżeli pasażer ma już wykupiony bagaż
     bool czyPriority(); // zwraca true jeżeli pasażer ma już wykupiony Priority Pass
-    bool potwierdzPlatnosc();
+    void potwierdzPlatnosc();
 
 
 };
