@@ -33,6 +33,7 @@ void wczytywanieLotow();
 void wyswietlanie();
 void wczytywanieRezerw();
 void wczytywanieKart();
+void wczytywaniePolaczen();
 
 
 
@@ -51,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->statusBar->addPermanentWidget(ui->PrzyciskAdmin); //Przycisk w StatusBar
     wczytywanieLotow();
 
-    wczytywanieRezerw();
+   wczytywanieRezerw();
     wczytywanieKart();
 
     wyswietlanie();
@@ -71,7 +72,7 @@ void MainWindow::wyswietlanie()
 
 
         Dostepne_polaczenia *polaczenie= new Dostepne_polaczenia(loty[i]);
-        pol.push_back(*polaczenie);
+        pol.insert(i,*polaczenie);
 
         ui->tabelaLotow->insertRow(i);
         ui->tabelaLotowAdmin->insertRow(i);
@@ -121,7 +122,7 @@ void MainWindow::setupConnections()
 void MainWindow::on_przyciskRezerwuj_clicked()
 {
 
-    qDebug()<<"licznik rezerwacji"<<licznik_rezerwacji<<"licznik kart"<<licznik_kart;
+
     wybrany_lot=ui->comboBox->currentIndex();
     ui->stackedWidget->setCurrentWidget(ui->stronaRezerwacje);
 
@@ -162,7 +163,7 @@ void MainWindow::on_przyciskDalej_clicked()
 
     Rezerwacje *p1=new Rezerwacje(loty[wybrany_lot],imie,nazwisko,nrtel,kraj);
     rezerwacje.push_back(*p1);
-    qDebug()<<licznik_rezerwacji;
+
     licznik_rezerwacji+=1;
     ui->stackedWidget->setCurrentWidget(ui->stronaKartapok);
     ui->lineImie->clear();
@@ -202,7 +203,7 @@ void MainWindow::on_przyciskSpr_clicked()
 
 for(int x=0;x<licznik_kart;x++)
 {
-    qDebug()<<"Nr miejsca: "<<karty[x].pokaz_karte()<<"Czy bagaz: "<<karty[x].czyBagaz()<<"x: "<<x<<"Nazwisko"<<karty[x].pokazNazwisko()<<"Wprowadzone nazwisko:"<<Snazw ;
+
 
         if(karty[x].pokazNazwisko() == Snazw && karty[x].pokazNr_tel() == Snr)
         {
@@ -403,13 +404,13 @@ void MainWindow::wczytywanieKart()
         {
 
         in>>karty[i].priority>>karty[i].bagaz>>karty[i].nr_miejsca>>karty[i].status_platnosci;
-       // qDebug()<<karty[i].nazwisko<<karty[i].nr_tel<<licznik_kart<<licznik_rezerwacji<<i<<"Nr miejsca:"<<karty[i].pokaz_karte()<<karty[i].podajNr_lotu()<<karty[i].czy_anulowana()<<"status platnosci"<<karty[i].status_platnosci;
+
         for(int k=0;k<n;k++)
         {
-            qDebug()<<karty[i].podajNr_lotu()<<loty[k].podaj_nr_lotu()<< karty[i].podajDate_lotu()<<loty[k].podaj_date();
+
             if(karty[i].podajNr_lotu()==loty[k].podaj_nr_lotu() && karty[i].podajDate_lotu()==loty[k].podaj_date() && karty[i].czy_anulowana()==false)
             {
-                qDebug()<<"Znaleziono zgodność"<<karty[i].pokaz_karte();
+              //  qDebug()<<"Znaleziono zgodność"<<karty[i].pokaz_karte();
 
                 loty[k].zajmij_miejsce(karty[i].pokaz_karte());
             }
@@ -452,7 +453,7 @@ void MainWindow::wczytywanieLotow()
     in.setVersion(QDataStream::Qt_5_10);
 
     in>>n;
-    qDebug()<<n;
+
     for (int i=0;i<n;i++)
     {
         Lot *lot1 = new Lot();
@@ -481,14 +482,14 @@ void MainWindow::on_przyciskDodaj2_clicked()
     QString DGodzWylotu=ui->lineGodzinaWylotu->text();
     QString DGodzPrzylotu=ui->lineGodzinaPrzylotu->text();
 
-    qDebug()<<"zaladowalo tekst"<<DGodzWylotu<<DGodzPrzylotu;
+   // qDebug()<<"zaladowalo tekst"<<DGodzWylotu<<DGodzPrzylotu;
     loty.insert(n,*admin1->dodaj_lot(Ddocelowe,Dnrlotu,Ddata,DLotniskoWylotu));
-    qDebug()<<"utworzylo lot";
+   // qDebug()<<"utworzylo lot";
     Dostepne_polaczenia *polaczenie= new Dostepne_polaczenia(loty[n],DGodzWylotu,DGodzPrzylotu);
     pol.push_back(*polaczenie);
     ui->tabelaLotow->insertRow(n);
     ui->tabelaLotowAdmin->insertRow(n);
-    qDebug()<<"dodalo wiersz";
+   // qDebug()<<"dodalo wiersz";
     MainWindow::ui->tabelaLotow->setItem(n,0,new QTableWidgetItem(pol[n].lotnisko_wylotu));
     MainWindow::ui->tabelaLotow->setItem(n,1,new QTableWidgetItem(pol[n].lotnisko_docelowe));
     MainWindow::ui->tabelaLotow->setItem(n,2,new QTableWidgetItem(pol[n].godzina_odlotu));
@@ -499,11 +500,18 @@ void MainWindow::on_przyciskDodaj2_clicked()
     MainWindow::ui->tabelaLotowAdmin->setItem(n,2,new QTableWidgetItem(pol[n].godzina_odlotu));
     MainWindow::ui->tabelaLotowAdmin->setItem(n,3,new QTableWidgetItem(pol[n].godzina_przylotu));
     MainWindow::ui->tabelaLotowAdmin->setItem(n,4,new QTableWidgetItem(pol[n].data_lotu));
-     qDebug()<<"zaladowalo do kolumn";
+   //  qDebug()<<"zaladowalo do kolumn";
 
     n++;
     ui->comboBox->addItem(QString::number(n));
+    ui->comboBoxAdmin->addItem(QString::number(n));
     ui->stackedWidget->setCurrentWidget(ui->AdminPanel);
+    ui->lineLotniskoDocelowe->clear();
+    ui->lineNrLotu->clear();
+    ui->lineDataLotu->clear();
+    ui->lineLotniskoWylotu->clear();
+    ui->lineGodzinaWylotu->clear();
+    ui->lineGodzinaPrzylotu->clear();
 }
 
 void MainWindow::on_przyciskUsunLot_clicked()
@@ -552,7 +560,7 @@ for(int x=0;x<licznik_kart;x++)
            }
 
         }        ui->stackedWidget->setCurrentWidget(ui->AdminPanel);
-              qDebug()<<"czy anulowana"<<karty[x].czy_anulowana();
+
            break;
         }
 
